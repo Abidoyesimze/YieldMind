@@ -1,4 +1,4 @@
-# YieldMind 🧠💰
+# YieldMind
 
 **The Future of DeFi Investing is Here**
 
@@ -6,7 +6,7 @@ YieldMind is like having a professional investment manager working 24/7 to grow 
 
 ![YieldMind Banner](https://via.placeholder.com/1200x400/1e293b/10b981?text=YieldMind+-+AI-Powered+DeFi+Platform)
 
-## 🌟 What is YieldMind?
+##  What is YieldMind?
 
 Think of YieldMind as your personal AI investment advisor that never sleeps. Instead of you having to research dozens of different investment opportunities, track market changes, and constantly rebalance your portfolio, YieldMind does all of this automatically using artificial intelligence.
 
@@ -17,34 +17,34 @@ Think of YieldMind as your personal AI investment advisor that never sleeps. Ins
 - You earn higher returns than traditional savings accounts or manual investing
 - You can withdraw your money anytime with minimal fees
 
-## 🎯 Who is YieldMind For?
+##  Who is YieldMind For?
 
-### 💼 **Busy Professionals**
+###  **Busy Professionals**
 - **Problem**: No time to research investments or manage portfolios
 - **Solution**: YieldMind handles everything automatically while you focus on your career
 - **Benefit**: Earn passive income without the time commitment
 
-### 🏠 **Savings Account Holders**
+###  **Savings Account Holders**
 - **Problem**: Traditional banks offer 0.01% interest rates
 - **Solution**: YieldMind offers 16%+ average returns
 - **Benefit**: Your money grows 1,600x faster than a regular savings account
 
-### 📈 **Crypto Beginners**
+###  **Crypto Beginners**
 - **Problem**: DeFi is complex and risky for newcomers
 - **Solution**: YieldMind's AI manages complexity and reduces risk
 - **Benefit**: Access professional-level returns without needing expertise
 
-### 💰 **Retirement Planners**
+###  **Retirement Planners**
 - **Problem**: Need steady, reliable growth for long-term goals
 - **Solution**: Diversified, AI-optimized portfolio with consistent returns
 - **Benefit**: Build wealth systematically with lower risk
 
-### 🎓 **Students & Young Adults**
+###  **Students & Young Adults**
 - **Problem**: Limited funds but want to start investing early
 - **Solution**: Low minimum deposits (0.1 STT) with high returns
 - **Benefit**: Compound growth from an early age
 
-## 💡 Why Choose YieldMind Over Traditional Options?
+##  Why Choose YieldMind Over Traditional Options?
 
 | Traditional Savings | YieldMind |
 |-------------------|-----------|
@@ -55,7 +55,7 @@ Think of YieldMind as your personal AI investment advisor that never sleeps. Ins
 | Limited by bank hours | 24/7 monitoring |
 | No transparency | Fully transparent |
 
-## 🚀 Real-World Benefits
+##  Real-World Benefits
 
 ### **For Your Wallet**
 - **Higher Returns**: Earn 16%+ annually vs 0.01% from banks
@@ -75,7 +75,7 @@ Think of YieldMind as your personal AI investment advisor that never sleeps. Ins
 - **Transparent**: All operations are visible on blockchain
 - **Secure**: Audited smart contracts with safety mechanisms
 
-## 📊 Real-World Examples
+##  Real-World Examples
 
 ### **Example 1: Sarah the Busy Professional**
 - **Situation**: Sarah works 60 hours/week and has $5,000 in savings
@@ -95,7 +95,7 @@ Think of YieldMind as your personal AI investment advisor that never sleeps. Ins
 - **YieldMind**: $50,000 × 16% × 10 = $80,000+ total growth
 - **Result**: Lisa's retirement fund grows 160x more than traditional savings
 
-## 🎯 Common Questions Answered
+##  Common Questions Answered
 
 ### **"Is this too good to be true?"**
 - YieldMind uses proven DeFi protocols that already offer high returns
@@ -119,7 +119,7 @@ Think of YieldMind as your personal AI investment advisor that never sleeps. Ins
 - Banks are limited by regulations; DeFi offers global opportunities
 - Banks have overhead costs; YieldMind is automated and efficient
 
-## 💰 Investment Tiers Explained Simply
+##  Investment Tiers Explained Simply
 
 ### **Free Tier** - Perfect for Getting Started
 - **Who**: First-time users, small investors
@@ -141,14 +141,14 @@ Think of YieldMind as your personal AI investment advisor that never sleeps. Ins
 
 ### Key Features
 
-- 🤖 **AI-Powered Optimization**: Advanced machine learning algorithms continuously analyze Somnia protocols
-- 🎯 **Risk-Adjusted Strategies**: Intelligent risk scoring ensures optimal portfolio allocation
-- ⚡ **Real-Time Rebalancing**: Automatic portfolio rebalancing based on your tier (24h to 1h)
-- 🔒 **Non-Custodial Security**: Your keys, your funds, your control
-- 📊 **Comprehensive Analytics**: Real-time performance metrics and portfolio insights
-- 🏆 **Tier-Based Benefits**: Stake MIND tokens for enhanced features and higher limits
+-  **AI-Powered Optimization**: Advanced machine learning algorithms continuously analyze Somnia protocols
+-  **Risk-Adjusted Strategies**: Intelligent risk scoring ensures optimal portfolio allocation
+-  **Real-Time Rebalancing**: Automatic portfolio rebalancing based on your tier (24h to 1h)
+-  **Non-Custodial Security**: Your keys, your funds, your control
+-  **Comprehensive Analytics**: Real-time performance metrics and portfolio insights
+-  **Tier-Based Benefits**: Stake MIND tokens for enhanced features and higher limits
 
-## 🚀 How It Works
+##  How It Works
 
 ### 1. AI Protocol Analysis
 Our AI continuously monitors Somnia protocols, analyzing APY, risk scores, and TVL to identify optimal opportunities.
@@ -162,7 +162,7 @@ Funds are automatically allocated across top-performing protocols based on your 
 ### 4. Continuous Monitoring
 24/7 monitoring ensures your portfolio stays optimized with automatic rebalancing based on your tier.
 
-## 💎 Investment Tiers
+##  Investment Tiers
 
 | Tier | MIND Required | Deposit Limit | Rebalance Frequency | Features |
 |------|---------------|---------------|-------------------|----------|
@@ -170,19 +170,8 @@ Funds are automatically allocated across top-performing protocols based on your 
 | **Premium** | 100 MIND | 100,000 STT | 4 hours | Advanced AI strategies, Priority protocol access, Premium support, Higher APY opportunities |
 | **Pro** | 500 MIND | 1,000,000 STT | 1 hour | Maximum AI optimization, Exclusive protocols, Dedicated support, Custom strategies, Early access features |
 
-## 🏦 Supported Protocols
 
-YieldMind automatically allocates your funds across Somnia's top-performing DeFi protocols:
-
-- **Somnia Staking** - 15% APY (Very Low Risk)
-- **QuickSwap** - 18% APY (Medium Risk) 
-- **Standard Protocol** - 12% APY (Low Risk)
-- **Haifu.fun** - 25% APY (High Risk)
-- **Salt Treasury** - 8% APY (Very Low Risk)
-
-*Expected Portfolio APY: 16.2%*
-
-## 📈 Platform Statistics
+##  Platform Statistics
 
 - **Total Value Locked**: $2M+
 - **Average APY**: 16.2%
@@ -190,7 +179,7 @@ YieldMind automatically allocates your funds across Somnia's top-performing DeFi
 - **AI Monitoring**: 24/7 continuous optimization
 - **Performance Fee**: Only 0.5% on profits
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 ### Frontend
 - **Next.js 14** - React framework with App Router
@@ -201,7 +190,7 @@ YieldMind automatically allocates your funds across Somnia's top-performing DeFi
 - **Ethers.js** - Blockchain interaction
 
 ### Smart Contracts
-- **Solidity ^0.8.19** - Smart contract development
+- **Solidity ^0.8.20** - Smart contract development
 - **OpenZeppelin** - Security standards and libraries
 - **Hardhat** - Development and testing framework
 - **TypeChain** - TypeScript bindings
@@ -212,7 +201,7 @@ YieldMind automatically allocates your funds across Somnia's top-performing DeFi
 - **Real-time Data** - Continuous market monitoring
 - **Performance Metrics** - Comprehensive analytics dashboard
 
-## 🚀 Getting Started (Super Simple!)
+##  Getting Started (Super Simple!)
 
 ### **Step 1: Get a Digital Wallet** 
 - Download MetaMask (like a digital bank account)
@@ -229,7 +218,7 @@ YieldMind automatically allocates your funds across Somnia's top-performing DeFi
 ### **Step 3: Get STT Tokens**
 - STT tokens are like Somnia's version of dollars
 - You can get them from Somnia's faucet (free test tokens)
-- Or exchange other crypto for STT tokens
+
 
 ### **Step 4: Start Earning!**
 - Go to YieldMind's deposit page
@@ -243,7 +232,7 @@ YieldMind automatically allocates your funds across Somnia's top-performing DeFi
 - You can check your earnings anytime on the dashboard
 - Withdraw your money whenever you want
 
-## 💡 Pro Tips for Beginners
+##  Pro Tips for Beginners
 
 ### **Start Small**
 - Begin with a small amount to get comfortable
@@ -265,7 +254,7 @@ YieldMind automatically allocates your funds across Somnia's top-performing DeFi
 - The longer you leave your money, the more it grows
 - Small amounts become significant over years
 
-## 📊 Dashboard Features
+##  Dashboard Features
 
 - **Portfolio Overview**: Real-time value and performance tracking
 - **AI Insights**: Intelligent recommendations and opportunities
@@ -273,7 +262,7 @@ YieldMind automatically allocates your funds across Somnia's top-performing DeFi
 - **Rebalance History**: Track all optimization activities
 - **Risk Metrics**: Portfolio risk assessment and scoring
 
-## 🔒 Security & Transparency
+##  Security & Transparency
 
 - **Non-Custodial**: You maintain full control of your funds
 - **Open Source**: All smart contracts are publicly auditable
@@ -281,7 +270,7 @@ YieldMind automatically allocates your funds across Somnia's top-performing DeFi
 - **Transparent**: All fees and operations are clearly documented
 - **Emergency Procedures**: Built-in safety mechanisms for edge cases
 
-## 💰 Fee Structure
+##  Fee Structure
 
 - **Performance Fee**: 0.5% only on profits earned
 - **Deposit Fee**: None
@@ -290,7 +279,7 @@ YieldMind automatically allocates your funds across Somnia's top-performing DeFi
 
 *You only pay fees on gains, never on your principal investment.*
 
-## 🌐 Network Information
+##  Network Information
 
 - **Blockchain**: Somnia Testnet
 - **Native Token**: STT (Somnia Test Token)
@@ -298,7 +287,7 @@ YieldMind automatically allocates your funds across Somnia's top-performing DeFi
 - **RPC Endpoint**: `https://dream-rpc.somnia.network`
 - **Explorer**: `https://explorer.somnia.network`
 
-## 📚 Documentation
+##  Documentation
 
 - [Getting Started Guide](/docs)
 - [Smart Contract Documentation](/docs)
@@ -306,31 +295,33 @@ YieldMind automatically allocates your funds across Somnia's top-performing DeFi
 - [API Reference](/docs)
 - [Community Support](/support)
 
-## 🤝 Community & Support
 
-- **Discord**: Join our community for updates and support
-- **Telegram**: Real-time announcements and discussions
-- **GitHub**: Open source development and contributions
-- **Support**: 24/7 customer support for all tiers
-
-## ⚠️ Risk Disclaimer
+## ⚠ Risk Disclaimer
 
 DeFi investments carry inherent risks. While YieldMind uses advanced AI to minimize risk, past performance does not guarantee future results. Please invest responsibly and only with funds you can afford to lose.
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Somnia blockchain team for providing the infrastructure
 - OpenZeppelin for security standards
 - The DeFi community for inspiration and collaboration
 
+## Consideration for the Somnia Team
+
+- Please kindly helps update the documentation for like protocol that somnia testnet support for best experience for devs for example
+- No good docs about the defi protocol that devs can use for interacting on their smart contracts on testnet
+- There's issue in verifying contracts
+
+## IF THIS UPDATE IS MADE THIS WILL GIVE DEVS GOOD EXPERIENCE IN BUILDING ON THE SOMNIA BLOCKCHAIN
+
 ---
 
 **Ready to maximize your STT returns?** 
 
-[🚀 Start Earning Now](/deposit) | [📊 View Dashboard](/dashboard) | [📖 Read Docs](/docs)
+[ Start Earning Now](/deposit) | [📊 View Dashboard](/dashboard) | [📖 Read Docs](/docs)
 
 *Built with ❤️ on Somnia blockchain*
