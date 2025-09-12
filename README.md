@@ -298,15 +298,6 @@ All YieldMind smart contracts are deployed on Somnia Testnet:
 | **MindStaking** | `0x1191D8CA1ED414F742574E4a28D0Ab9822D3d818` | MIND token staking contract for tier access |
 | **AIStrategyManager** | `0xE75CA0E9C69DE3a0979DD6A3dac384b398580c92` | AI-powered strategy management contract |
 
-*All contracts are verified on [Somnia Explorer](https://explorer.somnia.network) for transparency and security.*
-
-##  Documentation
-
-- [Getting Started Guide](/docs)
-- [Smart Contract Documentation](/docs)
-- [Security Audit Reports](/docs)
-- [API Reference](/docs)
-- [Community Support](/support)
 
 
 ## ⚠ Risk Disclaimer
