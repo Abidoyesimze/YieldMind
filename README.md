@@ -287,6 +287,19 @@ Funds are automatically allocated across top-performing protocols based on your 
 - **RPC Endpoint**: `https://dream-rpc.somnia.network`
 - **Explorer**: `https://explorer.somnia.network`
 
+##  Smart Contract Addresses
+
+All YieldMind smart contracts are deployed on Somnia Testnet:
+
+| Contract | Address | Description |
+|----------|---------|-------------|
+| **Vault** | `0x5E19885955D4062369479998753C29874f1E66c6` | Main vault contract for STT deposits and withdrawals |
+| **MockSomniaProtocol** | `0xb5127d7A36E34d45711c9B8EfDf16b4E2D7101CE` | Mock protocol for testing DeFi integrations |
+| **MindStaking** | `0x1191D8CA1ED414F742574E4a28D0Ab9822D3d818` | MIND token staking contract for tier access |
+| **AIStrategyManager** | `0xE75CA0E9C69DE3a0979DD6A3dac384b398580c92` | AI-powered strategy management contract |
+
+*All contracts are verified on [Somnia Explorer](https://explorer.somnia.network) for transparency and security.*
+
 ##  Documentation
 
 - [Getting Started Guide](/docs)
