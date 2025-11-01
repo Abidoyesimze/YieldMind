@@ -1,8 +1,8 @@
-import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 import { http, createConfig } from 'wagmi';
+import { walletConnect, injected, coinbaseWallet } from 'wagmi/connectors';
 
 // Define Somnia Testnet only - STT Focus Mode
-const somniaTestnetChain = {
+export const somniaTestnetChain = {
   id: 50312,
   name: 'Somnia Testnet',
   nativeCurrency: {
@@ -34,9 +34,29 @@ const somniaTestnetChain = {
   },
 } as const;
 
-export const wagmiConfig = getDefaultConfig({
-  appName: 'YieldMind',
-  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'YOUR_PROJECT_ID', // Set this in .env.local
-  chains: [somniaTestnetChain], // Somnia Testnet only - STT Focus Mode
-  ssr: false,
+// AppKit project ID
+export const projectId = 'a69043ecf4dca5c34a5e70fdfeac4558';
+
+// Metadata for AppKit
+export const metadata = {
+  name: 'YieldMind',
+  description: 'AI-Powered DeFi Investment Platform on Somnia',
+  url: 'https://yieldmind.app',
+  icons: ['https://avatars.githubusercontent.com/u/37784886']
+};
+
+export const wagmiConfig = createConfig({
+  chains: [somniaTestnetChain],
+  transports: {
+    [somniaTestnetChain.id]: http(),
+  },
+  connectors: [
+    walletConnect({ projectId, metadata, showQrModal: false }),
+    injected({ shimDisconnect: true }),
+    coinbaseWallet({
+      appName: metadata.name,
+      appLogoUrl: metadata.icons[0]
+    })
+  ],
+  ssr: true,
 });

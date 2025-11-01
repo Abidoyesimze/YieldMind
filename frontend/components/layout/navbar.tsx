@@ -1,19 +1,29 @@
 'use client';
 
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import Link from 'next/link';
 import { TrendingUp, Zap } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { useWeb3Modal } from '@web3modal/wagmi/react';
+import { useAccount, useDisconnect } from 'wagmi';
 // import { motion } from 'framer-motion'; // Uncomment when adding animation
 
 export function Navbar() {
   const pathname = usePathname();
+  const { open } = useWeb3Modal();
+  const { address, isConnected } = useAccount();
+  const { disconnect } = useDisconnect();
+
   const navLinks = [
     { href: '/dashboard', label: 'Dashboard' },
     { href: '/deposit', label: 'Deposit' },
     { href: '/withdraw', label: 'Withdraw' },
     { href: '/premium', label: (<><Zap className="w-4 h-4" /><span>Premium</span></>) },
   ];
+
+  const formatAddress = (addr: string) => {
+    return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
+  };
+
   return (
     // <motion.header ...> for animation in future
     <header className="border-b border-slate-800 bg-slate-900/60 backdrop-blur-xl sticky top-0 z-50 shadow-lg">
@@ -60,19 +70,12 @@ export function Navbar() {
           </button>
 
           <div className="ml-4">
-            <div className="relative group">
-              <div className="absolute -inset-1 rounded-xl blur-xl opacity-80 group-hover:opacity-100 transition-all pointer-events-none bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 animate-gradient-x" />
-              <div className="relative z-10 px-4 py-2 rounded-xl font-semibold text-white shadow-lg bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 bg-[length:200%_200%] animate-gradient-x hover:shadow-green-500/30 transition-transform hover:scale-105">
-                <ConnectButton
-                  chainStatus="icon"
-                  accountStatus={{
-                    smallScreen: 'avatar',
-                    largeScreen: 'full',
-                  }}
-                  showBalance={false}
-                />
-              </div>
-            </div>
+            <button
+              onClick={() => open()}
+              className="relative group px-6 py-2.5 rounded-xl font-semibold text-white shadow-lg bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 bg-[length:200%_200%] animate-gradient-x hover:shadow-green-500/30 transition-transform hover:scale-105"
+            >
+              {isConnected && address ? formatAddress(address) : 'Connect Wallet'}
+            </button>
           </div>
         </div>
       </div>
