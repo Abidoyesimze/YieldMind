@@ -54,9 +54,11 @@ export default function DepositPage() {
   const [contractState, setContractState] = useState<any>(null);
   const [contractStateError, setContractStateError] = useState<string | null>(null);
 
+  // Validate if user is on correct network (Somnia Testnet)
   const isCorrectNetwork = chainId === somniaTestnetChain.id;
 
   // Fetch balance and contract state when wallet is connected
+  // Automatically updates when connection status, address, or network changes
   useEffect(() => {
     if (isConnected && address && isCorrectNetwork) {
       fetchBalance(address);
