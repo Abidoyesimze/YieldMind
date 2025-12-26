@@ -16,7 +16,7 @@ export default function ComparisonPage() {
       pros: [
         'React-first approach with hooks',
         'Type-safe with TypeScript',
-        'Built-in wallet connection UI (RainbowKit)',
+        'Built-in wallet connection UI (AppKit/Reown)',
         'Automatic retry logic',
         'Optimistic updates',
         'Built-in caching with React Query'
