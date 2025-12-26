@@ -20,17 +20,19 @@ const inter = Inter({
 
 const queryClient = new QueryClient();
 
-// Create Web3Modal (AppKit)
+// Create Web3Modal (AppKit) instance
+// This initializes the wallet connection modal with custom theme
+// Theme uses YieldMind brand colors (green #10b981)
 createWeb3Modal({
   wagmiConfig,
   projectId,
-  enableAnalytics: true,
-  enableOnramp: true,
-  themeMode: 'dark',
+  enableAnalytics: true, // Enable analytics for wallet connection tracking
+  enableOnramp: true, // Enable onramp for buying crypto directly
+  themeMode: 'dark', // Dark theme to match YieldMind design
   themeVariables: {
-    '--w3m-color-mix': '#10b981',
-    '--w3m-accent': '#10b981',
-    '--w3m-border-radius-master': '12px'
+    '--w3m-color-mix': '#10b981', // Primary brand color
+    '--w3m-accent': '#10b981', // Accent color
+    '--w3m-border-radius-master': '12px' // Rounded corners
   }
 });
 
