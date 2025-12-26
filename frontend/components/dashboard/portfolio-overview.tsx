@@ -16,6 +16,8 @@ export function PortfolioOverview({
   change7d, 
   totalEarnings 
 }: PortfolioOverviewProps) {
+  // Format numbers as STT tokens with appropriate decimal places
+  // Shows 2-4 decimal places for better readability
   const formatSTT = (value: number) => {
     return new Intl.NumberFormat('en-US', {
       minimumFractionDigits: 2,
