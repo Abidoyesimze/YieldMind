@@ -36,9 +36,11 @@ export const somniaTestnetChain = {
 } as const;
 
 // AppKit project ID
+// Required for WalletConnect integration
 export const projectId = 'a69043ecf4dca5c34a5e70fdfeac4558';
 
 // Metadata for AppKit
+// Used to display app information in wallet connection UI
 export const metadata = {
   name: 'YieldMind',
   description: 'AI-Powered DeFi Investment Platform on Somnia',
