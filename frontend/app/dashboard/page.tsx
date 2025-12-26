@@ -28,8 +28,10 @@ import Link from 'next/link';
 import toast from 'react-hot-toast';
 
 export default function DashboardPage() {
-  // AppKit hooks
+  // AppKit (Reown) hooks for wallet connection
+  // useAccount: Get connected wallet address and connection status
   const { address, isConnected } = useAccount();
+  // useChainId: Get current chain ID for network validation
   const chainId = useChainId();
   
   const { portfolio, isLoading, setLoading, updatePortfolio } = useYieldMindStore();
