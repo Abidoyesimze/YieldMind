@@ -36,10 +36,14 @@ export default function DepositPage() {
     setLoading
   } = useYieldMindStore();
 
-  // AppKit hooks
+  // AppKit (Reown) hooks for wallet connection
+  // useAccount: Get connected wallet address and connection status
   const { address, isConnected } = useAccount();
+  // useChainId: Get current chain ID for network validation
   const chainId = useChainId();
+  // useSwitchChain: Switch to correct network if needed
   const { switchChain } = useSwitchChain();
+  // useWeb3Modal: Open AppKit wallet connection modal
   const { open } = useWeb3Modal();
   
   const [sttBalance, setSttBalance] = useState('0');
