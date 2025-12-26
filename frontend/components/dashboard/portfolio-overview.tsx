@@ -16,11 +16,10 @@ export function PortfolioOverview({
   change7d, 
   totalEarnings 
 }: PortfolioOverviewProps) {
-  const formatCurrency = (value: number) => {
+  const formatSTT = (value: number) => {
     return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
       minimumFractionDigits: 2,
+      maximumFractionDigits: 4,
     }).format(value);
   };
 
@@ -45,7 +44,7 @@ export function PortfolioOverview({
             <div>
               <p className="text-slate-400 text-xs font-inter tracking-wide">Total Portfolio Value</p>
               <p className="text-3xl font-space-grotesk font-bold text-white mt-1">
-                <span className="font-ibm-plex-mono tracking-tight">{formatCurrency(totalValue)}</span>
+                <span className="font-ibm-plex-mono tracking-tight">{formatSTT(totalValue)} STT</span>
               </p>
             </div>
             <div className="p-3 bg-green-400/20 rounded-lg">
@@ -61,7 +60,7 @@ export function PortfolioOverview({
             <div>
               <p className="text-slate-400 text-xs font-inter tracking-wide">24h Change</p>
               <p className="text-2xl font-space-grotesk font-semibold text-white mt-1">
-                <span className="font-ibm-plex-mono tracking-tight">{formatCurrency(Math.abs(change24h))}</span>
+                <span className="font-ibm-plex-mono tracking-tight">{formatSTT(Math.abs(change24h))} STT</span>
               </p>
             </div>
             <div>
@@ -77,7 +76,7 @@ export function PortfolioOverview({
             <div>
               <p className="text-slate-400 text-xs font-inter tracking-wide">7d Change</p>
               <p className="text-2xl font-space-grotesk font-semibold text-white mt-1">
-                <span className="font-ibm-plex-mono tracking-tight">{formatCurrency(Math.abs(change7d))}</span>
+                <span className="font-ibm-plex-mono tracking-tight">{formatSTT(Math.abs(change7d))} STT</span>
               </p>
             </div>
             <div>
@@ -93,7 +92,7 @@ export function PortfolioOverview({
             <div>
               <p className="text-gray-400 text-sm">Total Earnings</p>
               <p className="text-3xl font-space-grotesk font-bold text-green-400 mt-1">
-                <span className="font-ibm-plex-mono tracking-tight">{formatCurrency(totalEarnings)}</span>
+                <span className="font-ibm-plex-mono tracking-tight">{formatSTT(totalEarnings)} STT</span>
               </p>
             </div>
             <div className="p-3 bg-blue-400/20 rounded-lg">
