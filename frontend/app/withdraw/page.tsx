@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowLeft, TrendingDown, RefreshCw, AlertCircle, CheckCircle } from 'lucide-react';
 import { Navbar } from '@/components/layout/navbar';
 import { GradientButton } from '@/components/ui/gradient-button';
@@ -8,27 +8,28 @@ import { GlowCard } from '@/components/ui/glow-card';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 import { StatusBadge } from '@/components/ui/status-badge';
 import { 
-  createEthersSigner, 
   executeWithdrawal, 
   getSTTBalance, 
-  checkWalletConnection,
-  switchToSomniaTestnet,
   getUserPosition,
   SOMNIA_CONFIG
 } from '@/lib/ethers-provider';
+import { useAccount, useChainId, useSwitchChain, useWeb3Modal } from '@web3modal/wagmi/react';
+import { somniaTestnetChain } from '@/lib/wagmi';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 
 type WithdrawalType = 'partial' | 'full';
 
 export default function WithdrawPage() {
-  const [isConnected, setIsConnected] = useState(false);
-  const [address, setAddress] = useState<string | null>(null);
+  // AppKit hooks
+  const { address, isConnected } = useAccount();
+  const chainId = useChainId();
+  const { switchChain } = useSwitchChain();
+  const { open } = useWeb3Modal();
+  
   const [sttBalance, setSttBalance] = useState('0');
   const [isBalanceLoading, setIsBalanceLoading] = useState(false);
   const [isWithdrawing, setIsWithdrawing] = useState(false);
-  const [isCorrectNetwork, setIsCorrectNetwork] = useState(false);
-  const [connectionError, setConnectionError] = useState<string | null>(null);
   const [txHash, setTxHash] = useState<string | null>(null);
   const [txStatus, setTxStatus] = useState<'idle' | 'pending' | 'confirmed' | 'failed'>('idle');
   
@@ -44,37 +45,15 @@ export default function WithdrawPage() {
   const [withdrawalAmount, setWithdrawalAmount] = useState('');
   const [withdrawalType, setWithdrawalType] = useState<WithdrawalType>('partial');
 
-  const checkConnection = useCallback(async () => {
-    try {
-      setIsBalanceLoading(true);
-      setConnectionError(null);
-      
-      const connection = await checkWalletConnection();
-      
-      setIsConnected(connection.isConnected);
-      setAddress(connection.address);
-      setIsCorrectNetwork(connection.isCorrectNetwork);
-      
-      if (connection.error) {
-        setConnectionError(connection.error);
-      }
-      
-      if (connection.isConnected && connection.address) {
-        await fetchBalance(connection.address);
-        await fetchUserPosition(connection.address);
-      }
-    } catch (error) {
-      console.error('Connection check failed:', error);
-      setConnectionError('Failed to check wallet connection');
-    } finally {
-      setIsBalanceLoading(false);
-    }
-  }, []);
+  const isCorrectNetwork = chainId === somniaTestnetChain.id;
 
-  // Check wallet connection on mount
+  // Fetch balance and position when wallet is connected
   useEffect(() => {
-    checkConnection();
-  }, [checkConnection]);
+    if (isConnected && address && isCorrectNetwork) {
+      fetchBalance(address);
+      fetchUserPosition(address);
+    }
+  }, [isConnected, address, isCorrectNetwork]);
 
   const fetchBalance = async (userAddress: string) => {
     try {
@@ -102,9 +81,11 @@ export default function WithdrawPage() {
 
   const connectWallet = async () => {
     try {
-      await switchToSomniaTestnet();
-      await checkConnection();
-      toast.success('Wallet connected successfully!');
+      if (!isConnected) {
+        await open();
+      } else if (!isCorrectNetwork) {
+        await switchChain({ chainId: somniaTestnetChain.id });
+      }
     } catch (error: any) {
       console.error('Wallet connection failed:', error);
       toast.error(`Failed to connect wallet: ${error?.message || 'Unknown error'}`);
@@ -251,7 +232,12 @@ export default function WithdrawPage() {
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-space-grotesk text-lg font-bold text-white tracking-tight">Wallet Connection</h3>
                 <button
-                  onClick={checkConnection}
+                  onClick={() => {
+                    if (address) {
+                      fetchBalance(address);
+                      fetchUserPosition(address);
+                    }
+                  }}
                   className="flex items-center text-gray-400 hover:text-green-400 transition-colors"
                   title="Refresh connection"
                   disabled={isBalanceLoading}
@@ -293,15 +279,14 @@ export default function WithdrawPage() {
                           <div className="text-gray-300 text-sm">
                             Please switch to Somnia Testnet (Chain ID: {SOMNIA_CONFIG.chainId})
                           </div>
+                          <button
+                            onClick={() => switchChain({ chainId: somniaTestnetChain.id })}
+                            className="mt-2 text-sm text-blue-400 hover:text-blue-300"
+                          >
+                            Switch Network
+                          </button>
                         </div>
                       </div>
-                    </div>
-                  )}
-
-                  {connectionError && (
-                    <div className="p-4 bg-red-400/10 border border-red-400/20 rounded-xl">
-                      <div className="text-red-400 font-semibold">Connection Error</div>
-                      <div className="text-gray-300 text-sm">{connectionError}</div>
                     </div>
                   )}
                 </div>
