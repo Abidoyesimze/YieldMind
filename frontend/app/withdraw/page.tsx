@@ -85,11 +85,15 @@ export default function WithdrawPage() {
     }
   };
 
+  // Handle wallet connection using AppKit modal
+  // Opens AppKit modal if not connected, switches network if on wrong chain
   const connectWallet = async () => {
     try {
       if (!isConnected) {
+        // Open AppKit wallet connection modal
         await open();
       } else if (!isCorrectNetwork) {
+        // Switch to Somnia Testnet if on wrong network
         await switchChain({ chainId: somniaTestnetChain.id });
       }
     } catch (error: any) {
