@@ -49,9 +49,11 @@ export default function WithdrawPage() {
   const [withdrawalAmount, setWithdrawalAmount] = useState('');
   const [withdrawalType, setWithdrawalType] = useState<WithdrawalType>('partial');
 
+  // Validate if user is on correct network (Somnia Testnet)
   const isCorrectNetwork = chainId === somniaTestnetChain.id;
 
   // Fetch balance and position when wallet is connected
+  // Automatically updates when connection status, address, or network changes
   useEffect(() => {
     if (isConnected && address && isCorrectNetwork) {
       fetchBalance(address);
