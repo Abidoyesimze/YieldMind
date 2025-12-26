@@ -9,9 +9,10 @@ import { useAccount, useDisconnect } from 'wagmi';
 
 export function Navbar() {
   const pathname = usePathname();
-  const { open } = useWeb3Modal();
-  const { address, isConnected } = useAccount();
-  const { disconnect } = useDisconnect();
+  // AppKit hooks for wallet connection in navbar
+  const { open } = useWeb3Modal(); // Open wallet connection modal
+  const { address, isConnected } = useAccount(); // Get wallet state
+  const { disconnect } = useDisconnect(); // Disconnect wallet
 
   const navLinks = [
     { href: '/dashboard', label: 'Dashboard' },
