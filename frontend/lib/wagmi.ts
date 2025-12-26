@@ -2,6 +2,7 @@ import { http, createConfig } from 'wagmi';
 import { walletConnect, injected, coinbaseWallet } from 'wagmi/connectors';
 
 // Define Somnia Testnet only - STT Focus Mode
+// This chain configuration is used by AppKit for wallet connections
 export const somniaTestnetChain = {
   id: 50312,
   name: 'Somnia Testnet',
