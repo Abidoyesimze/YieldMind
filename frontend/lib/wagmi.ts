@@ -48,18 +48,23 @@ export const metadata = {
   icons: ['https://avatars.githubusercontent.com/u/37784886']
 };
 
+// Wagmi configuration for AppKit integration
+// Supports multiple wallet connectors: WalletConnect, Injected (MetaMask), Coinbase Wallet
 export const wagmiConfig = createConfig({
   chains: [somniaTestnetChain],
   transports: {
     [somniaTestnetChain.id]: http(),
   },
   connectors: [
+    // WalletConnect connector for mobile wallets
     walletConnect({ projectId, metadata, showQrModal: false }),
+    // Injected connector for browser extensions (MetaMask, etc.)
     injected({ shimDisconnect: true }),
+    // Coinbase Wallet connector
     coinbaseWallet({
       appName: metadata.name,
       appLogoUrl: metadata.icons[0]
     })
   ],
-  ssr: true,
+  ssr: true, // Enable server-side rendering support
 });
