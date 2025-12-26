@@ -44,9 +44,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${spaceGrotesk.variable} ${inter.variable} font-inter`}>
+        {/* WagmiProvider: Provides wagmi context for AppKit hooks */}
         <WagmiProvider config={wagmiConfig}>
+          {/* QueryClientProvider: Provides React Query for data fetching */}
           <QueryClientProvider client={queryClient}>
             {children}
+            {/* Toaster: Toast notifications for user feedback */}
             <Toaster position="top-right" />
           </QueryClientProvider>
         </WagmiProvider>
