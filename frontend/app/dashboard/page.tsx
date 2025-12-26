@@ -16,25 +16,24 @@ import { AIInsights } from '@/components/dashboard/ai-insights';
 import { useYieldMindStore } from '@/lib/store';
 
 import { 
-  checkWalletConnection, 
   getSTTBalance, 
   checkContractState,
   getYieldMindVaultContract,
   claimRewards,
   getPendingRewards
 } from '@/lib/ethers-provider';
+import { useAccount, useChainId } from '@web3modal/wagmi/react';
+import { somniaTestnetChain } from '@/lib/wagmi';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 
 export default function DashboardPage() {
+  // AppKit hooks
+  const { address, isConnected } = useAccount();
+  const chainId = useChainId();
+  
   const { portfolio, isLoading, setLoading, updatePortfolio } = useYieldMindStore();
   const [refreshing, setRefreshing] = useState(false);
-  const [walletConnection, setWalletConnection] = useState({
-    isConnected: false,
-    address: null as string | null,
-    chainId: null as number | null,
-    isCorrectNetwork: false
-  });
   const [userBalance, setUserBalance] = useState('0');
   const [contractState, setContractState] = useState<any>(null);
   const [userPosition, setUserPosition] = useState({
@@ -80,28 +79,24 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const loadDashboardData = async () => {
+      if (!isConnected || !address) {
+        setLoading(false);
+        return;
+      }
+
       setLoading(true);
       try {
-        // Check wallet connection
-        const connection = await checkWalletConnection();
-        setWalletConnection(connection);
-        
-        if (!connection.isConnected || !connection.address) {
-          setLoading(false);
-          return;
-        }
-
         // Load user balance
-        const balance = await getSTTBalance(connection.address);
+        const balance = await getSTTBalance(address);
         setUserBalance(balance);
 
         // Load contract state
-        const contractData = await checkContractState(connection.address);
+        const contractData = await checkContractState(address);
         setContractState(contractData);
 
         // Load user position from contract
         const vault = await getYieldMindVaultContract();
-        const position = await vault.userPositions(connection.address);
+        const position = await vault.userPositions(address);
         setUserPosition({
           principal: position.principal.toString(),
           currentValue: position.currentValue.toString(),
@@ -117,7 +112,7 @@ export default function DashboardPage() {
         }));
 
         // Load pending rewards
-        const rewardsData = await getPendingRewards(connection.address);
+        const rewardsData = await getPendingRewards(address);
         setPendingRewards(rewardsData.pendingRewards);
 
         // Update portfolio store with real data
@@ -148,58 +143,52 @@ export default function DashboardPage() {
     };
 
     loadDashboardData();
-  }, [setLoading, updatePortfolio]);
+  }, [isConnected, address, setLoading, updatePortfolio]);
 
   const handleRefresh = async () => {
-    if (!walletConnection.address) return;
+    if (!address) return;
     
     setRefreshing(true);
     try {
-      // Reload all dashboard data
-      const connection = await checkWalletConnection();
-      setWalletConnection(connection);
-      
-      if (connection.isConnected && connection.address) {
-        const balance = await getSTTBalance(connection.address);
-        setUserBalance(balance);
+      const balance = await getSTTBalance(address);
+      setUserBalance(balance);
 
-        const contractData = await checkContractState(connection.address);
-        setContractState(contractData);
+      const contractData = await checkContractState(address);
+      setContractState(contractData);
 
-        const vault = await getYieldMindVaultContract();
-        const position = await vault.userPositions(connection.address);
-        setUserPosition({
-          principal: position.principal.toString(),
-          currentValue: position.currentValue.toString(),
-          totalReturns: position.totalReturns.toString(),
-          lastUpdateTime: position.lastUpdateTime.toString()
-        });
+      const vault = await getYieldMindVaultContract();
+      const position = await vault.userPositions(address);
+      setUserPosition({
+        principal: position.principal.toString(),
+        currentValue: position.currentValue.toString(),
+        totalReturns: position.totalReturns.toString(),
+        lastUpdateTime: position.lastUpdateTime.toString()
+      });
 
-        const totalValueLocked = await vault.getTotalValueLocked();
-        setPlatformStats(prev => ({
-          ...prev,
-          totalValueLocked: totalValueLocked.toString()
-        }));
+      const totalValueLocked = await vault.getTotalValueLocked();
+      setPlatformStats(prev => ({
+        ...prev,
+        totalValueLocked: totalValueLocked.toString()
+      }));
 
-        // Update portfolio store
-        const realPortfolioData = {
-          totalValue: parseFloat(position.currentValue.toString()) / 1e18,
-          allocations: [
-            { 
-              chain: 'Somnia',
-              protocol: 'SomniaYield Protocol', 
-              amount: parseFloat(position.currentValue.toString()) / 1e18,
-              apy: 12.5, // Mock APY for now
-              color: '#10b981'
-            }
-          ],
-          historicalData: [
-            { date: (Date.now() - 86400000).toString(), value: parseFloat(position.principal.toString()) / 1e18 },
-            { date: Date.now().toString(), value: parseFloat(position.currentValue.toString()) / 1e18 }
-          ]
-        };
-        updatePortfolio(realPortfolioData);
-      }
+      // Update portfolio store
+      const realPortfolioData = {
+        totalValue: parseFloat(position.currentValue.toString()) / 1e18,
+        allocations: [
+          { 
+            chain: 'Somnia',
+            protocol: 'SomniaYield Protocol', 
+            amount: parseFloat(position.currentValue.toString()) / 1e18,
+            apy: 12.5, // Mock APY for now
+            color: '#10b981'
+          }
+        ],
+        historicalData: [
+          { date: (Date.now() - 86400000).toString(), value: parseFloat(position.principal.toString()) / 1e18 },
+          { date: Date.now().toString(), value: parseFloat(position.currentValue.toString()) / 1e18 }
+        ]
+      };
+      updatePortfolio(realPortfolioData);
       
       toast.success('Dashboard data refreshed');
     } catch (error) {
@@ -215,7 +204,7 @@ export default function DashboardPage() {
   };
 
   const handleClaimRewards = async () => {
-    if (!walletConnection.address) return;
+    if (!address) return;
     
     setIsClaimingRewards(true);
     try {
@@ -237,14 +226,14 @@ export default function DashboardPage() {
     }
   };
 
-  if (!walletConnection.isConnected) {
+  if (!isConnected) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <Navbar />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <h1 className="text-3xl font-bold text-white mb-4">Connect Your Wallet</h1>
           <p className="text-gray-300 mb-8">Please connect your wallet to view your dashboard</p>
-          <Link href="/deposit-ethers">
+          <Link href="/deposit">
             <GradientButton>Connect Wallet & Deposit</GradientButton>
           </Link>
         </div>
@@ -320,9 +309,9 @@ export default function DashboardPage() {
               <p className="text-gray-300">
                 AI-optimized yield farming on Somnia Testnet
               </p>
-              {walletConnection.address && (
+              {address && (
                 <p className="text-sm text-gray-400 mt-1">
-                  Connected: {walletConnection.address.slice(0, 6)}...{walletConnection.address.slice(-4)}
+                  Connected: {address.slice(0, 6)}...{address.slice(-4)}
                 </p>
               )}
             </div>
