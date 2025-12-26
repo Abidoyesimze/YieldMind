@@ -216,31 +216,6 @@ export const getSTTBalance = async (address: string) => {
   }
 };
 
-// Check if wallet is connected and on correct network
-export const checkWalletConnection = async () => {
-  try {
-    const signer = await createEthersSigner();
-    const address = await signer.getAddress();
-    const provider = signer.provider;
-    const network = await provider.getNetwork();
-    
-    return {
-      isConnected: true,
-      address,
-      chainId: Number(network.chainId),
-      isCorrectNetwork: Number(network.chainId) === SOMNIA_CONFIG.chainId
-    };
-  } catch (error: any) {
-    return {
-      isConnected: false,
-      address: null,
-      chainId: null,
-      isCorrectNetwork: false,
-      error: error?.message || 'Unknown error'
-    };
-  }
-};
-
 // Execute withdrawal with ethers
 export const executeWithdrawal = async (amount: string) => {
   try {
@@ -395,34 +370,3 @@ export const getPendingRewards = async (userAddress: string) => {
   }
 };
 
-// Switch to Somnia Testnet
-export const switchToSomniaTestnet = async () => {
-  if (typeof window === 'undefined' || !window.ethereum) {
-    throw new Error('MetaMask not detected');
-  }
-
-  try {
-    await window.ethereum.request({
-      method: 'wallet_switchEthereumChain',
-      params: [{ chainId: `0x${SOMNIA_CONFIG.chainId.toString(16)}` }],
-    });
-  } catch (switchError: any) {
-    // If the network doesn't exist, add it
-    if (switchError?.code === 4902) {
-      await window.ethereum.request({
-        method: 'wallet_addEthereumChain',
-        params: [
-          {
-            chainId: `0x${SOMNIA_CONFIG.chainId.toString(16)}`,
-            chainName: SOMNIA_CONFIG.name,
-            rpcUrls: SOMNIA_CONFIG.rpcUrls,
-            nativeCurrency: SOMNIA_CONFIG.nativeCurrency,
-            blockExplorerUrls: [SOMNIA_CONFIG.blockExplorer],
-          },
-        ],
-      });
-    } else {
-      throw switchError;
-    }
-  }
-};
