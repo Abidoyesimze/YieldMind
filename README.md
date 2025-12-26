@@ -187,6 +187,7 @@ Funds are automatically allocated across top-performing protocols based on your 
 - **Tailwind CSS** - Utility-first styling
 - **Framer Motion** - Smooth animations
 - **Wagmi** - Ethereum wallet integration
+- **AppKit (Reown)** - Modern wallet connection UI
 - **Ethers.js** - Blockchain interaction
 
 ### Smart Contracts
